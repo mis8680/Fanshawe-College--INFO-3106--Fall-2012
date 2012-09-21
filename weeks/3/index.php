@@ -14,7 +14,7 @@ foreach( $square->getDimensions() as $side_length ) {
 }
 
 
-$triangle = new Triangle(array (5,6,15));
+$triangle = new Triangle(array (5,6,7));
 
 print $triangle . '<br />';
 foreach( $triangle->getDimensions() as $side_length2 ) {
