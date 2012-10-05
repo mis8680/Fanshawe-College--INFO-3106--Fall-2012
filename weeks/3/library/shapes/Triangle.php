@@ -13,41 +13,21 @@ class Triangle extends Shape {
     return 3;
   }
   
-  public function setDimensions(array $dimensions)
-  {
+  public function setDimensions(array $dimensions) {
 	$dimensions_count = count($dimensions);
-    
-    if( 0 == $dimensions_count ) {
-      throw new Exception('Cannot have empty array of dimensions when setting.');
-    }
-	
-	if( 1 === $dimensions_count ) {
-      $this->_dimensions = array();
-      for( $i = 0; $i < $this->getNumberOfDimensions(); ++$i ) {
-        $this->_dimensions[] = $dimensions[0];
-      }
-    }
-	
-	else if ( 3 === $dimensions_count) {
-		if( ($dimensions[0] <  ($dimensions[1] + $dimensions[2]))
-			&& ($dimensions[1] <  ($dimensions[0] + $dimensions[2]))
-				&& ($dimensions[2] <  ($dimensions[1] + $dimensions[0]))
-		){
-			$this->_dimensions = $dimensions;
-		}
-		else{
-			throw new Exception('This is not a TRIANGLE');
-		}
-		
-		
+	if( 2 > $dimensions_count || 3 < $dimensions_count ) {
+		throw new Exception('Triangle dimensions array must have either two or three elements.');
 	}
-	
+
+	if( 2 == $dimensions_count ) {
+		$this->_dimensions = array( $dimensions[0], $dimensions[1] );
+		$this->_dimensions[3] = sqrt( pow($this->_dimensions[0], 2) + pow($this->_dimensions[1], 2));
+	}
 	else {
-      throw new Exception('You must specify one or all three side dimensions of the triangle.');
-    }
+		$this->_dimensions = array();
+		for( $i = 0; $i < $this->getNumberOfDimensions(); ++$i ) {
+			$this->_dimensions[] = $dimensions[$i];
+		}
+	}
   }
-  
 }
-
-
-?>
