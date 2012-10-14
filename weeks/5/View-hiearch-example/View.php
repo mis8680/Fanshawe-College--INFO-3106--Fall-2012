@@ -9,12 +9,12 @@ namespace InsuMun
     /**
      * @ignore
      */
-    defined('IN_LIBRARY') or exit;
+    //defined('IN_LIBRARY') or exit;
     
     /**
      * View
      */
-    class View extends \InsuMun\Object
+    class View //extends Object
     {
         /**
          * @var array Static member variable containing global view variables.
@@ -399,6 +399,10 @@ namespace InsuMun
         final public function toString()
         {
             return $this->contents(true);
+        }
+        
+        final public function __toString(){
+            return $this->toString();
         }
         
         /**
